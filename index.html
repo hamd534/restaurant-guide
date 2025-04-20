@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل المطاعم</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+    
+
+    <header>
+        <h1>دليل المطاعم</h1>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">المطاعم</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="search my-3">
+        <input type="text" id="searchInput" placeholder="ابحث عن مطعم..." onkeyup="searchRestaurant()">
+    </section>
+
+    <section class="restaurant-list" id="restaurantList">
+        <div class="row g-3 ">
+                    
+        <div class="col-md-3 restaurant ">
+            <img src="img/WhatsApp Image 2024-11-27 at 22.28.30_76be8326.jpg" style="width: 100%; height: 200px;" alt="مطعم 1" class="restaurant-image">
+        
+            <div class="bg-white py-2 rounded-bottom-2  " style="height: 150px;">
+            <h2> مطعم ابو طارق</h2>
+                <p>من اشهر مطاعم الكشري ف القاهره</p>
+            </div>
+        </div>
+        <div class="restaurant col-md-3"  >
+            <img src="img/WhatsApp Image 2024-11-27 at 22.28.31_c2dbacfc.jpg" style="width: 100%;height: 200px; " alt="مطعم 1" class="restaurant-image">
+            <div class="bg-white py-2 rounded-bottom-2" style="height: 150px;">
+                <h2> قصر الكبابجي</h2>
+                <p>من اشهر المطاعم في مصر ويمتد الي عده فروع علي مستوي القاعره والساحل الشمالي </p>
+           
+            </div>
+        </div>
+        <div class="restaurant col-md-3"  >
+            <img src="img/WhatsApp Image 2024-11-27 at 22.28.31_246160a0.jpg" style="width: 100% ;height: 200px; " alt="مطعم 1" class="restaurant-image">
+            <div class="bg-white py-2 rounded-bottom-2" style="height: 150px;">
+                <h2>مطعم بلبن </h2>
+                <p>من اشهر مطاعم الحلويات علي مستوي الجمهورية ولديه عده فروع علي مستوي مصر</p>    
+            </div>
+        </div>
+        <div class="restaurant col-md-3"  >
+            <img src="img/WhatsApp Image 2024-11-27 at 22.28.31_013cd2eb.jpg" style="width: 100%;height: 200px" " alt="مطعم 1" class="restaurant-image">
+            <div class="bg-white py-2 rounded-bottom-2">
+                <h2>مطعم فلفلة  </h2>
+                <p>يعد من أقدم وأشهر المطاعم المصرية التي تقدم الأطعمة التقليدية مثل الملوخية، الطاجن، الكشري، والمشاوي</p>
+           
+            </div>
+        </div>
+        <div class="restaurant col-md-3" >
+            <img src="img/WhatsApp Image 2024-11-27 at 22.28.31_37393ba2.jpg" style="width: 100%; height: 200px;" alt="مطعم 1" class="restaurant-image">
+            <div class="bg-white py-2 rounded-bottom-2" style="height: 150px;">
+                <h2>مطعم البرنس </h2>          
+                <p>يعد واحدًا من أفضل مطاعم الكباب في مصر، ويمتاز بأجواء حيوية. يقدم أطباق الكباب والكفتة والمشويات التي تعد على الفحم</p>
+           
+            </div>
+        </div>
+        </div>
+  </section>
+
+    <div class="w-100 d-flex flex-column align-items-center justify-content-center my-5">
+        <select id="sortSelect" onchange="sortRestaurants()">
+            <option value="rating">ترتيب حسب التقييم</option>
+            <option value="price">ترتيب حسب السعر</option>
+        </select>
+        <button onclick="toggleFavorite(1)" class="favorite-btn btn btn-outline-dark p-3 mt-3 " >أضف إلى المفضلة</button>
+    
+    </div>
+    <div class="rate text-center">
+        <div class="star-rating">
+            <span class="star" onclick="rateRestaurant(1)">★</span>
+            <span class="star" onclick="rateRestaurant(2)">★</span>
+            <span class="star" onclick="rateRestaurant(3)">★</span>
+            <span class="star" onclick="rateRestaurant(4)">★</span>
+            <span class="star" onclick="rateRestaurant(5)">★</span>
+        </div>
+        <p id="rating-text">التقييم: غير محدد</p>
+    </div>
+
+
+<section class="contact-form my-5">
+    <h2>اتصل بالمطعم</h2>
+    <form>
+        <label for="name">اسمك:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">البريد الإلكتروني:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">رسالتك:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">إرسال</button>
+    </form>
+</section>
+<section class="advanced-filters">
+    <label for="city">المدينة:</label>
+    <select id="city">
+        <option value="riyadh">القاهره</option>
+        <option value="jeddah">الاسكندريه</option>
+        <option value="dammam">المنصوره</option>
+    </select>
+    
+    <label for="cuisine">نوع المأكولات:</label>
+    <select id="cuisine">
+        <option value="italian">مشويات</option>
+        <option value="arabic">بحري</option>
+        <option value="seafood">بدوي</option>
+    </select>
+    
+    <label for="diet">النظام الغذائي:</label>
+    <select id="diet">
+        <option value="vegan">نباتي</option>
+        <option value="gluten-free">خالي منالجلوتين </option>
+        <option value="none">لا شيء</option>
+    </select>
+    
+    <button onclick="applyFilters()" class=" btn btn-dark ">تطبيق الفلاتر</button>
+</section>
+
+<section class="reservation">
+    <h2>احجز طاولتك الآن</h2>
+    <form>
+        <label for="resName">اسمك:</label>
+        <input type="text" id="resName" name="resName" required>
+        
+        <label for="resEmail">البريد الإلكتروني:</label>
+        <input type="email" id="resEmail" name="resEmail" required>
+        
+        <label for="resDate">تاريخ الحجز:</label>
+        <input type="date" id="resDate" name="resDate" required>
+        
+        <label for="resTime">الوقت:</label>
+        <input type="time" id="resTime" name="resTime" required>
+        
+        <label for="resGuests">عدد الأشخاص:</label>
+        <input type="number" id="resGuests" name="resGuests" required>
+        
+        <button type="submit" class=" btn btn-dark p-3 mt-3">أرسل الحجز</button>
+    </form>
+</section>
+
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025</p>
+    </footer>
+
+    <div id="map" style="width:100%; height: 400px;">
+        <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54837.47704693497!2d31.0405562975919!3d30.793033285836835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7c95daafcf035%3A0x7421820c5e8cae42!2z2LfZhti32KfYjCDYt9mG2LfYpyAo2YLYs9mFIDIp2Iwg2YXYsdmD2LIg2LfZhti32KfYjCDZhdit2KfZgdi42Kkg2KfZhNi62LHYqNmK2Kk!5e0!3m2!1sar!2seg!4v1726702124970!5m2!1sar!2seg"
+        width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="container discound my-4">
+        <h1>العروض والخصومات الخاصة بالمطاعم</h1>
+    
+        <!-- نموذج لإضافة عرض -->
+        <div class="add-offer">
+          <h2>أضف عرض جديد</h2>
+          <form id="offerForm">
+            <input type="text" id="restaurant" placeholder="اسم المطعم" required>
+            <input type="text" id="discount" placeholder="نسبة الخصم" required>
+            <textarea id="description" placeholder="وصف العرض" required></textarea><br>
+            <button type="submit">إضافة عرض</button>
+          </form>
+        </div>
+    
+        <!-- قسم لعرض العروض -->
+        <div id="offers">
+          <!-- العروض ستتم إضافتها هنا باستخدام جافا سكريبت -->
+        </div>
+      </div>
+    
+
+      <div class="container ordar my-4">
+        <h1>طلب الطعام عبر الإنترنت</h1>
+    
+        <!-- نموذج طلب الطعام -->
+        <div class="order-form">
+          <h2>اختر طعامك</h2>
+          <form id="orderForm">
+            <label for="restaurant">اختار المطعم:</label>
+            <select id="restaurant" required>
+              <option value="مطعم قصر الكبابجي">مطعم قصر الكبابجي</option>
+              <option value="مطعم بلبن">مطعم بلبن</option>
+              <option value="مطعم كبده البرنس">مطعم كبده البرنس</option>
+            </select>
+    
+            <label for="dish">اختار الوجبة:</label>
+            <select id="dish" required>
+              <option value="كباب">كباب</option>
+              <option value="بيتزا">حلويات</option>
+              <option value="مأكولات بحرية">مأكولات مشويه</option>
+            </select>
+    
+            <label for="quantity">الكمية:</label>
+            <input type="number" id="quantity" min="1" value="1" required>
+    
+            <label for="address">عنوان التوصيل:</label>
+            <textarea id="address" required placeholder="أدخل عنوانك هنا"></textarea>
+    
+            <label for="payment">طريقة الدفع:</label>
+            <select id="payment" required>
+              <option value="الدفع عند الاستلام">الدفع عند الاستلام</option>
+              <option value="الدفع عبر الإنترنت">الدفع عبر الإنترنت</option>
+            </select>
+    
+            <button type="submit">إتمام الطلب</button>
+          </form>
+        </div   </div>
+
+        <!-- قسم لعرض تفاصيل الطلب -->
+        <div id="orderSummary" class="order-summary" style="display: none;">
+          <h2>ملخص الطلب</h2>
+          <p id="summary"></p>
+          <button id="confirmPayment">تأكيد الدفع</button>
+        </div>
+      </div>
+    
+
+<script>
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 24.7136, lng: 46.6753 }, // الرياض كمثال
+            zoom: 12,
+        });
+        
+        const marker = new google.maps.Marker({
+            position: { lat: 24.7136, lng: 46.6753 },
+            map: map,
+            title: "مطعم 1",
+        });
+    }
+</script>
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>
